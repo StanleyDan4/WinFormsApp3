@@ -6,7 +6,7 @@ namespace WinFormsApp3
     public partial class Form1 : Form
     {
         private readonly AppDbContext _context;
-        public Form1()
+        public Form1(AppDbContext context)
         {
             InitializeComponent();
             _context = context;

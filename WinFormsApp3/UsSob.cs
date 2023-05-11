@@ -22,9 +22,9 @@ namespace WinFormsApp3
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int Opisanie { get; set; }
+        public string Opisanie { get; set; }
         public string Start { get; set; }
-        public int End { get; set; }
+        public string End { get; set; }
         public User User { get; set; }
     }
     internal class UsSob
