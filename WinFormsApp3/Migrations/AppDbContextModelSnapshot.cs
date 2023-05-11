@@ -9,7 +9,7 @@ using WinFormsApp3;
 
 namespace WinFormsApp3.Migrations
 {
-    [DbContext(typeof(Form1.AppDbContext))]
+    [DbContext(typeof(AppDbContext.AppDb))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

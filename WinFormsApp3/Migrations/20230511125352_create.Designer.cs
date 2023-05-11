@@ -10,7 +10,7 @@ using WinFormsApp3;
 
 namespace WinFormsApp3.Migrations
 {
-    [DbContext(typeof(Form1.AppDbContext))]
+    [DbContext(typeof(AppDbContext.AppDb))]
     [Migration("20230511125352_create")]
     partial class create
     {
