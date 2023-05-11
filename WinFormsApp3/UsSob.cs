@@ -27,7 +27,7 @@ namespace WinFormsApp3
         public int End { get; set; }
         public User User { get; set; }
     }
-    internal class Classes
+    internal class UsSob
     {
     }
 }
