@@ -17,7 +17,7 @@ namespace WinFormsApp3
         private readonly AppDbContext _context;
         private readonly User _user;
 
-        public Sob Sob { get; private set; }
+        public Sob Sob;
 
         public Form4(AppDbContext context, User user)
         {
@@ -40,26 +40,19 @@ namespace WinFormsApp3
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            User user = new User();
-            var sob = new Sob
+                       var sob = new Sob
             {
                 Name = textBox1.Text,
                 Opisanie = textBox2.Text,
                 Start = textBox3.Text,
                 End = textBox4.Text,
-                Id = _user.Id
+                UserId = _user.Id
             };
-
+            _context.Sobs.Add(sob);
+            _context.SaveChanges();
             DialogResult = DialogResult.OK;
-           Form3 frm = new Form3(new AppDbContext(), user);
-
-            var sobs = await _context.Sobs.ToListAsync();
-            foreach (var Sob1 in sobs)
-            {
-                
-                    frm.dataGridView1.Rows.Add(sob.Id,sob.Name, sob.Opisanie, sob.Start,sob.End);
-                
-            }
+            
+         
            
         }
 

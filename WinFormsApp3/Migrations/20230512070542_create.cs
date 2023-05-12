@@ -29,22 +29,29 @@ namespace WinFormsApp3.Migrations
                 name: "Sobs",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Opisanie = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Start = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    End = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    End = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Sobs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Sobs_Users_Id",
-                        column: x => x.Id,
+                        name: "FK_Sobs_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Sobs_UserId",
+                table: "Sobs",
+                column: "UserId");
         }
 
         /// <inheritdoc />

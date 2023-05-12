@@ -29,7 +29,7 @@ namespace WinFormsApp3
 
             dataGridView1.AutoGenerateColumns = true;
             dataGridView1.DataSource = _user.Sobs;
-
+            dataGridView1.Refresh();
 
         }
 

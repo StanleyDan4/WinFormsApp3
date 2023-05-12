@@ -24,7 +24,10 @@ namespace WinFormsApp3.Migrations
             modelBuilder.Entity("WinFormsApp3.Sob", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("End")
                         .IsRequired()
@@ -42,7 +45,12 @@ namespace WinFormsApp3.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Sobs");
                 });
@@ -76,7 +84,7 @@ namespace WinFormsApp3.Migrations
                 {
                     b.HasOne("WinFormsApp3.User", "User")
                         .WithMany("Sobs")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
