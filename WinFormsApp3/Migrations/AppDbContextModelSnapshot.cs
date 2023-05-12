@@ -9,7 +9,7 @@ using WinFormsApp3;
 
 namespace WinFormsApp3.Migrations
 {
-    [DbContext(typeof(AppDbContext.AppDb))]
+    [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -21,20 +21,22 @@ namespace WinFormsApp3.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("WinFormsApp3.Form1+Sob", b =>
+            modelBuilder.Entity("WinFormsApp3.Sob", b =>
                 {
                     b.Property<int>("Id")
                         .HasColumnType("int");
 
-                    b.Property<int>("End")
-                        .HasColumnType("int");
+                    b.Property<string>("End")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Opisanie")
-                        .HasColumnType("int");
+                    b.Property<string>("Opisanie")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Start")
                         .IsRequired()
@@ -45,7 +47,7 @@ namespace WinFormsApp3.Migrations
                     b.ToTable("Sobs");
                 });
 
-            modelBuilder.Entity("WinFormsApp3.Form1+User", b =>
+            modelBuilder.Entity("WinFormsApp3.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -70,9 +72,9 @@ namespace WinFormsApp3.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("WinFormsApp3.Form1+Sob", b =>
+            modelBuilder.Entity("WinFormsApp3.Sob", b =>
                 {
-                    b.HasOne("WinFormsApp3.Form1+User", "User")
+                    b.HasOne("WinFormsApp3.User", "User")
                         .WithMany("Sobs")
                         .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -81,7 +83,7 @@ namespace WinFormsApp3.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("WinFormsApp3.Form1+User", b =>
+            modelBuilder.Entity("WinFormsApp3.User", b =>
                 {
                     b.Navigation("Sobs");
                 });

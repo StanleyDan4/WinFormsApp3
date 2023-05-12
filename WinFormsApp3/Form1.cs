@@ -7,27 +7,7 @@ namespace WinFormsApp3
     
 
 
-    public class User
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public List<Sob> Sobs { get; set; }
-        public User()
-        {
-            Sobs = new List<Sob>();
-        }
-    }
-    public class Sob
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Opisanie { get; set; }
-        public string Start { get; set; }
-        public string End { get; set; }
-        public User User { get; set; }
-    }
+
 
 
     public partial class Form1 : Form
@@ -63,7 +43,7 @@ namespace WinFormsApp3
             _context.SaveChanges();
 
             MessageBox.Show("Вы успешно зарегистрировались!", "Регистрация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Close();
+            
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -71,7 +51,32 @@ namespace WinFormsApp3
 
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form2 newfrm = new Form2();
+            newfrm.Show();
+        }
+    }
 
-
+    public class User
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public List<Sob> Sobs { get; set; }
+        public User()
+        {
+            Sobs = new List<Sob>();
+        }
+    }
+    public class Sob
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Opisanie { get; set; }
+        public string Start { get; set; }
+        public string End { get; set; }
+        public User User { get; set; }
     }
 }

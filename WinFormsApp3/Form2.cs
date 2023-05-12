@@ -36,7 +36,9 @@ namespace WinFormsApp3
                 var email = textBox1.Text;
                 var password = textBox2.Text;
 
+#pragma warning disable CS8600 // Преобразование литерала, допускающего значение NULL или возможного значения NULL в тип, не допускающий значение NULL.
                 user = context.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
+#pragma warning restore CS8600 // Преобразование литерала, допускающего значение NULL или возможного значения NULL в тип, не допускающий значение NULL.
             }
 
 

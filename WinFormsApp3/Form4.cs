@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -36,8 +38,9 @@ namespace WinFormsApp3
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
+            User user = new User();
             var sob = new Sob
             {
                 Name = textBox1.Text,
@@ -47,12 +50,17 @@ namespace WinFormsApp3
                 Id = _user.Id
             };
 
-            _context.Sobs.Add(sob);
-            _context.SaveChanges();
-
-            Sob = sob;
             DialogResult = DialogResult.OK;
+           Form3 frm = new Form3(new AppDbContext(), user);
 
+            var sobs = await _context.Sobs.ToListAsync();
+            foreach (var Sob1 in sobs)
+            {
+                
+                    frm.dataGridView1.Rows.Add(sob.Id,sob.Name, sob.Opisanie, sob.Start,sob.End);
+                
+            }
+           
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -61,6 +69,11 @@ namespace WinFormsApp3
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -31,9 +31,9 @@ namespace WinFormsApp3.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Opisanie = table.Column<int>(type: "int", nullable: false),
+                    Opisanie = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Start = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    End = table.Column<int>(type: "int", nullable: false)
+                    End = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -35,14 +35,16 @@ namespace WinFormsApp3
 
         private void button1_Click(object sender, EventArgs e)
         {
-             var bookForm = new Form4(_context, _user);
-            if (bookForm.ShowDialog() == DialogResult.OK)
+             var sobForm = new Form4(_context, _user);
+        
+            if (sobForm.ShowDialog() == DialogResult.OK)
             {
-                _user.Sobs.Add(bookForm.Sob);
+                _user.Sobs.Add(sobForm.Sob);
                 _context.SaveChanges();
 
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = _user.Sobs;
+              
             }
 
         }
@@ -50,8 +52,8 @@ namespace WinFormsApp3
         private void button2_Click(object sender, EventArgs e)
         {
             var selectedRow = dataGridView1.SelectedRows[0];
-            var book = (Sob)selectedRow.DataBoundItem;
-            _user.Sobs.Remove(book);
+            var sob = (Sob)selectedRow.DataBoundItem;
+            _user.Sobs.Remove(sob);
             _context.SaveChanges();
 
             dataGridView1.DataSource = null;
@@ -62,6 +64,11 @@ namespace WinFormsApp3
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

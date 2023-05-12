@@ -10,7 +10,7 @@ namespace WinFormsApp3
     
     public class AppDbContext : DbContext
     {
-        private const string ConnectionString = "DataSource=(localdb)\\mssqllocaldb;Initial Catalog = LibraryDb; IntegratedSecurity = True;";
+        private const string ConnectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog = LibraryDb_my; Integrated Security = True;";
         public DbSet<User> Users { get; set; }
         public DbSet<Sob> Sobs { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder
@@ -18,17 +18,13 @@ namespace WinFormsApp3
         {
             optionsBuilder.UseSqlServer(ConnectionString);
         }
-        protected override void OnModelCreating(ModelBuilder
-       modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()
-            .HasMany(u => u.Sobs)
-            .WithOne(b => b.User)
+            .HasMany(b => b.Sobs)
+            .WithOne(u => u.User)
             .HasForeignKey(b => b.Id);
         }
 
-        internal class AppDb
-        {
-        }
     }
 }
